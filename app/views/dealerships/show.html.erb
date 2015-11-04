@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @dealership.name %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @dealership.location %>
+</p>
+
+<p>
+  <strong>Add Vehicle:</strong>
+</p>
+  <%= render 'vehicles/form' %>
+  
+<p>
+  <strong>Vehicles:</strong>
+  <% @dealership.vehicles.each do |vehicle| %>
+  <p><strong><%= vehicle.year %> <%= vehicle.make %></strong></p>
+  <p><%= vehicle.model %></p>
+  <p><%= vehicle.price %></p>
+  <%= image_tag vehicle.avatar.url(:medium) %>
+  <%= link_to "DELETE", vehicle_path, method: :delete, class: "btn btn-danger" %>
+  <%end%>
+</p>
+
+<%= link_to 'Back', dealerships_path %>
